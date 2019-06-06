@@ -25,14 +25,14 @@
 
 			// SET DEFAULT VALUES OF ITEM //
 			var defaults = {
-				delay:0,
+				delay:9000,
 				responsiveLevels:4064,					// Single or Array for Responsive Levels i.e.: 4064 or i.e. [2048, 1024, 768, 480]					
 				visibilityLevels:[2048,1024,778,480],	// Single or Array for Responsive Visibility Levels i.e.: 4064 or i.e. [2048, 1024, 768, 480]					
 				gridwidth:960,							// Single or Array i.e. 960 or [960, 840,760,460]
 				gridheight:500,							// Single or Array i.e. 500 or [500, 450,400,350]
 				minHeight:0,
 				autoHeight:"off",					
-				sliderType : "hero",				// standard, carousel, hero					
+				sliderType : "standard",				// standard, carousel, hero					
 				sliderLayout : "auto",					// auto, fullwidth, fullscreen				
 
 				fullScreenAutoWidth:"off",				// Turns the FullScreen Slider to be a FullHeight but auto Width Slider
@@ -44,8 +44,8 @@
 				hideAllCaptionAtLimit:0,				// Hide all The Captions if Width of Browser is less then this value
 				hideSliderAtLimit:0,					// Hide the whole slider, and stop also functions if Width of Browser is less than this value										
 				disableProgressBar:"off",				// Hides Progress Bar if is set to "on"
-				stopAtSlide:1,							// Stop Timer if Slide "x" has been Reached. If stopAfterLoops set to 0, then it stops already in the first Loop at slide X which defined. -1 means do not stop at any slide. stopAfterLoops has no sinn in this case.
-				stopAfterLoops:0,						// Stop Timer if All slides has been played "x" times. IT will stop at THe slide which is defined via stopAtSlide:x, if set to -1 slide never stop automatic
+				stopAtSlide:-1,							// Stop Timer if Slide "x" has been Reached. If stopAfterLoops set to 0, then it stops already in the first Loop at slide X which defined. -1 means do not stop at any slide. stopAfterLoops has no sinn in this case.
+				stopAfterLoops:-1,						// Stop Timer if All slides has been played "x" times. IT will stop at THe slide which is defined via stopAtSlide:x, if set to -1 slide never stop automatic
 				shadow:0,								//0 = no Shadow, 1,2,3 = 3 Different Art of Shadows  (No Shadow in Fullwidth Version !)
 				dottedOverlay:"none",					//twoxtwo, threexthree, twoxtwowhite, threexthreewhite
 				startDelay:0,							// Delay before the first Animation starts.				
@@ -55,8 +55,8 @@
 
 				
 				viewPort:{
-					enable:true,						// if enabled, slider wait with start or wait at first slide.
-					outof:"pause",						// wait,pause						
+					enable:false,						// if enabled, slider wait with start or wait at first slide.
+					outof:"wait",						// wait,pause						
 					visible_area:"60%",					// Start Animation when 60% of Slider is visible
 					presize:false 						// Presize the Height of the Slider Container for Internal Link Positions
 				},
@@ -113,9 +113,9 @@
 					showLayersAllTime : "off",
 					horizontal_align : "center",
 					vertical_align : "center",
-					infinity : "off",
+					infinity : "on",
 					space : 0,
-					maxVisibleItems : 1,						
+					maxVisibleItems : 3,						
 					stretch:"off",						
 					fadeout:"on",						
 					maxRotation:0,						
@@ -2742,7 +2742,7 @@ var swapSlideProgress = function(defimg,container) {
 
 		
 	// SELECT SLIDER TYPE
-	if ( opt.sliderType =="hero") {									
+	if ( opt.sliderType =="carousel") {									
 		mtl = new punchgs.TimelineLite();		
 		_R.prepareCarousel(opt,mtl);			
 		letItFree(container,nextsh,actsh,nextli,actli,mtl);
